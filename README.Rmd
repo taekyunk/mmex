@@ -1,0 +1,92 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# mmex
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of mmex is to make it easy to read information from Money Manager EX (MMEX) database.
+MMEX is an excellent open source personal finance manager and you can find and download from [here](https://www.moneymanagerex.org/)
+
+For instance, MMEX has the following benefits
+
+- It is freeware and open source
+- It is available in multiple platform (e.g. PC and Android).
+- The database (SQLite format) syncs across platform using Google Drive
+
+This package is built for my personal use to create reports of my personal finance. 
+As a result, it does not support *all* features of MMEX.
+For instance, I do not use investment accounts so this package does not support it. 
+Even though I have some investments, I just keep track of initial investment amount as Bank accounts.
+
+However, this package includes utility functions to 
+
+- list all tables
+- get one table by name
+
+So, you can pull tables of interest and join them properly by using the table relationship described [here](https://github.com/moneymanagerex/database)
+
+
+## Author
+
+Taekyun (TK) Kim (taekyunk@gmail.com)
+
+
+## Installation
+
+You can install the github version of mmex with:
+
+``` r
+library(devtools)
+install_github("taekyunk/mmex") 
+```
+
+## Example
+
+
+Find tables in MMEX db
+
+```{r}
+library(mmex)
+test_db <- system.file("extdata", "mmex_test_database_2014-01-26.mmb", package = "mmex")
+list_mmex_table(test_db)
+```
+
+
+Read one table from MMEX db.
+
+- To find the list of tables, use `list_mmex_table()`
+- To find the relationship between tables, refer to this [https://github.com/moneymanagerex/database](https://github.com/moneymanagerex/database)
+
+```{r example}
+library(mmex)
+test_db <- system.file("extdata", "mmex_test_database_2014-01-26.mmb", package = "mmex")
+df_account <- read_mmex_table('accountlist_v1', test_db)
+```
+
+
+Read some selected tables as one data.frame/tibble.
+Note that this function joins mostly useful for me, but not all tables. 
+
+```{r}
+library(mmex)
+test_db <- system.file("extdata", "mmex_test_database_2014-01-26.mmb", package = "mmex")
+df <- read_mmex_db(test_db)
+df
+```
+
+
+Note that the test database is from this [link](https://forum.moneymanagerex.org/viewtopic.php?f=7&t=5397)

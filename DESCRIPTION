@@ -1,0 +1,21 @@
+Package: mmex
+Type: Package
+Title: Reads unencrypted database from Money Manager EX (MMEX) as a data.frame
+Version: 0.2.2
+Author: Taekyun Kim
+Maintainer: Taekyun Kim <taekyunk@gmail.com>
+Description: Reads MMEX database for analysis 
+    Note that it does not support all tables yet (e.g. investment) because I don't use it
+License: MIT
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    lubridate,
+    RSQLite,
+    janitor,
+    tibble,
+    stringr,
+    magrittr,
+    dplyr
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
