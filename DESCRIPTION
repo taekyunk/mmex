@@ -1,7 +1,7 @@
 Package: mmex
 Type: Package
 Title: Reads unencrypted database from Money Manager EX (MMEX) as a data.frame
-Version: 0.2.2
+Version: 0.3.0
 Author: Taekyun Kim
 Maintainer: Taekyun Kim <taekyunk@gmail.com>
 Description: Reads MMEX database for analysis 

@@ -90,11 +90,18 @@ read_mmex_db <- function(db_loc){
         df_account %>%
         dplyr::select(accountid, accountname, accounttype, initialbal)
 
+    df_account_name <-
+        df_account1 %>%
+        dplyr::select(accountid, accountname) %>%
+        dplyr::rename(toaccountid = accountid) %>%
+        dplyr::rename(toaccountname = accountname)
+
     # combine
     df <-
         df_tran %>%
         dplyr::mutate(transdate = lubridate::ymd(transdate)) %>%
         dplyr::left_join(df_account1, by = "accountid") %>%
+        dplyr::left_join(df_account_name, by = 'toaccountid') %>%
         dplyr::left_join(df_payee %>% dplyr::select(payeeid, payeename), by = "payeeid") %>%
         dplyr::left_join(df_cat, by = "categid") %>%
         dplyr::left_join(df_subcat, by = c("categid", "subcategid")) %>%
