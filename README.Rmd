@@ -40,6 +40,10 @@ However, this package includes utility functions to
 So, you can pull tables of interest and join them properly by using the table relationship described [here](https://github.com/moneymanagerex/database)
 
 
+## Note
+- Only supports up to [version 1.6.1](https://github.com/moneymanagerex/moneymanagerex/releases/tag/v1.6.1)
+- After version 1.6.2, the category structure is more flexible and I don't personally use them. 
+
 ## Author
 
 Taekyun (TK) Kim (taekyunk@gmail.com)

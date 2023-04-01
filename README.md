@@ -13,10 +13,9 @@ finance manager and you can find and download from
 
 For instance, MMEX has the following benefits
 
--   It is freeware and open source
--   It is available in multiple platform (e.g. PC and Android).
--   The database (SQLite format) syncs across platform using Google
-    Drive
+- It is freeware and open source
+- It is available in multiple platform (e.g. PC and Android).
+- The database (SQLite format) syncs across platform using Google Drive
 
 This package is built for my personal use to create reports of my
 personal finance. As a result, it does not support *all* features of
@@ -26,12 +25,19 @@ track of initial investment amount as Bank accounts.
 
 However, this package includes utility functions to
 
--   list all tables
--   get one table by name
+- list all tables
+- get one table by name
 
 So, you can pull tables of interest and join them properly by using the
 table relationship described
 [here](https://github.com/moneymanagerex/database)
+
+## Note
+
+- Only supports up to [version
+  1.6.1](https://github.com/moneymanagerex/moneymanagerex/releases/tag/v1.6.1)
+- After version 1.6.2, the category structure is more flexible and I
+  don’t personally use them.
 
 ## Author
 
@@ -66,9 +72,9 @@ list_mmex_table(test_db)
 
 Read one table from MMEX db.
 
--   To find the list of tables, use `list_mmex_table()`
--   To find the relationship between tables, refer to this
-    <https://github.com/moneymanagerex/database>
+- To find the list of tables, use `list_mmex_table()`
+- To find the relationship between tables, refer to this
+  <https://github.com/moneymanagerex/database>
 
 ``` r
 library(mmex)
@@ -84,24 +90,25 @@ library(mmex)
 test_db <- system.file("extdata", "mmex_test_database_2014-01-26.mmb", package = "mmex")
 df <- read_mmex_db(test_db)
 df
-#> # A tibble: 8,069 x 22
-#>    transid accountid toaccountid payeeid transcode  transamount status
-#>      <int>     <int>       <int>   <int> <chr>            <dbl> <chr> 
-#>  1       1         3           4      -1 Transfer        -10000 R     
-#>  2       2         1          -1       5 Deposit           1200 R     
-#>  3       3         1          -1       5 Withdrawal        -300 R     
-#>  4       4         1          -1       5 Deposit           1500 R     
-#>  5       5         1          -1       5 Withdrawal        -375 R     
-#>  6       6         1          -1       5 Deposit           1200 R     
-#>  7       7         1          -1       5 Withdrawal        -300 R     
-#>  8       8         1          -1       5 Deposit           1200 R     
-#>  9       9         1          -1       5 Withdrawal        -300 R     
-#> 10      10         1          -1       6 Deposit           1600 R     
-#> # ... with 8,059 more rows, and 15 more variables: transactionnumber <chr>,
-#> #   notes <chr>, categid <int>, subcategid <int>, transdate <date>,
-#> #   followupid <int>, totransamount <dbl>, accountname <chr>,
+#> # A tibble: 8,069 × 22
+#>    transid accoun…¹ toacc…² payeeid trans…³ trans…⁴ status trans…⁵ notes categid
+#>      <int>    <int>   <int>   <int> <chr>     <dbl> <chr>  <chr>   <chr>   <int>
+#>  1       1        3       4      -1 Transf…  -10000 R      ""      "Ini…      16
+#>  2       2        1      -1       5 Deposit    1200 R      ""      ""         13
+#>  3       3        1      -1       5 Withdr…    -300 R      ""      ""         13
+#>  4       4        1      -1       5 Deposit    1500 R      ""      ""         13
+#>  5       5        1      -1       5 Withdr…    -375 R      ""      ""         13
+#>  6       6        1      -1       5 Deposit    1200 R      ""      ""         13
+#>  7       7        1      -1       5 Withdr…    -300 R      ""      ""         13
+#>  8       8        1      -1       5 Deposit    1200 R      ""      ""         13
+#>  9       9        1      -1       5 Withdr…    -300 R      ""      ""         13
+#> 10      10        1      -1       6 Deposit    1600 R      ""      ""         13
+#> # … with 8,059 more rows, 12 more variables: subcategid <int>,
+#> #   transdate <date>, followupid <int>, totransamount <dbl>, accountname <chr>,
 #> #   accounttype <chr>, initialbal <int>, toaccountname <chr>, payeename <chr>,
-#> #   categname <chr>, subcategname <chr>, cat_name <chr>
+#> #   categname <chr>, subcategname <chr>, cat_name <chr>, and abbreviated
+#> #   variable names ¹​accountid, ²​toaccountid, ³​transcode, ⁴​transamount,
+#> #   ⁵​transactionnumber
 ```
 
 Note that the test database is from this
